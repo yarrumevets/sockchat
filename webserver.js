@@ -5,7 +5,7 @@ const WebSocket = require("ws");
 
 // Webserver
 var app = express();
-const port = 1399;
+const port = 4322;
 // Chat server
 const websocketServer = new WebSocket.Server({ port: 5999 });
 const sockets = [];
