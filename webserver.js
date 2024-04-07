@@ -1,10 +1,10 @@
 // Webserver
-var express = require("express");
+const express = require("express");
 // Chat server
 const WebSocket = require("ws");
 
 // Webserver
-var app = express();
+const app = express();
 const port = 4322;
 // Chat server
 const websocketServer = new WebSocket.Server({ port: 5999 });

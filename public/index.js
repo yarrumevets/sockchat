@@ -1,16 +1,16 @@
 window.onload = () => {
-  var elementChatLog = document.getElementById("chat-log");
-  var elementInputText = document.getElementById("input-text");
-  var elementSubmitButton = document.getElementById("submit-button");
+  const elementChatLog = document.getElementById("chat-log");
+  const elementInputText = document.getElementById("input-text");
+  const elementSubmitButton = document.getElementById("submit-button");
 
   // Add text to the chat log.
   function addMessage(dataUsername, dataMessage, dataTimestamp) {
-    var elemNewMessage = document.createElement("p");
-    var elemUserName = document.createElement("span");
+    const elemNewMessage = document.createElement("p");
+    const elemUserName = document.createElement("span");
     elemUserName.classList.add("chat-text-user");
-    var elemMessageText = document.createElement("span");
+    const elemMessageText = document.createElement("span");
     elemMessageText.classList.add("chat-text-message");
-    var elemTimestamp = document.createElement("span");
+    const elemTimestamp = document.createElement("span");
     elemTimestamp.classList.add("chat-text-timestamp");
     elemUserName.innerHTML = dataUsername;
     elemMessageText.innerHTML = dataMessage;
@@ -56,7 +56,7 @@ window.onload = () => {
 
   // Receive update from server.
   connection.onmessage = (message) => {
-    var data = JSON.parse(message.data);
+    const data = JSON.parse(message.data);
     // Catch pong responses for keep alive mechanism.
     if (data.type === "pong") {
       console.log("Pong!"); // Uncomment to monitor keepalive.
@@ -67,7 +67,7 @@ window.onload = () => {
   };
   // Send message to server.
   elementSubmitButton.onclick = () => {
-    var messageText = elementInputText.value;
+    const messageText = elementInputText.value;
     const message = JSON.stringify({ messageText, type: "" });
     connection.send(message);
     elementInputText.value = "";
