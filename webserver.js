@@ -34,4 +34,19 @@ websocketServer.on("connection", (websocket) => {
       sock.send(newMessage);
     });
   });
+
+  // Send a ping to the client every 30 seconds
+  const interval = setInterval(() => {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.ping("keepalive");
+    }
+  }, 50000); // 50 seconds. Assumes nginx default proxy_read_timeout of 60 seconds
+
+  ws.on("pong", function incoming(data) {
+    console.log(`Pong received from client: ${data}`);
+  });
+
+  ws.on("close", function clear() {
+    clearInterval(interval);
+  });
 });
